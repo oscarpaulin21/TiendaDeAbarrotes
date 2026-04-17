@@ -29,6 +29,20 @@
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-boxes-stacked"></i></span>
             <input type="number" class="form-control" placeholder="Stock del producto" id="stock" name="stock" required>
         </div>
+
+        <!-- 🔥 SOLO ESTO SE AGREGÓ -->
+        <div class="mb-3">
+            <label>Categoría</label>
+            <select name="categoria_id" class="form-control" required>
+                <option value="">Selecciona categoría</option>
+                @foreach($categorias as $categoria)
+                    <option value="{{ $categoria->id }}">
+                        {{ $categoria->nombre }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-outline-primary"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
         <!-- Botón para cancelar y volver a la lista de productos -->
         <div class="d-flex justify-content-end mt-3">

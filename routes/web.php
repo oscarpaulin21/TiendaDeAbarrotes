@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\MerchantController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,6 +11,8 @@ Route::get('/', function () {
 Route::middleware(['auth']) -> group(function () {
     //Generar rutas de todos los metodos del controlador
     Route::resource('productos', ProductoController::class);
+
+    Route::resource('categorias', \App\Http\Controllers\CategoriaController::class);
 });
 
 
@@ -47,4 +50,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/registroAdmin', [
         AuthController::class, 'registerAdminForm'
     ])->name('registroAdmin');
+    
+    Route::resource('usuarios', \App\Http\Controllers\UserController::class);
+
+
+
 });
+
+
+Route::get('/merchant/productos', [MerchantController::class, 'productos']);
+Route::get('/productos-google', [MerchantController::class, 'vistaProductos']);
+Route::get('/productos-google', [MerchantController::class, 'vistaProductos'])->name('productos.google');

@@ -14,6 +14,14 @@
     </div>
 @endif
 
+@if(session('warning'))
+    <div class="alert alert-warning alert-dismissible d-flex align-items-center fade show" role="alert">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <strong class="mx-2">Advertencia:</strong>{{ session('warning') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
 <script>
 setTimeout(function() {
     var alertElement = document.querySelector('.alert');

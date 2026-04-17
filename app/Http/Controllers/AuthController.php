@@ -86,5 +86,4 @@ class AuthController extends Controller
     {
         return view('admin.registerAdmin');
     }
-
 }

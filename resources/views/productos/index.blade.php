@@ -14,6 +14,9 @@
         <a href="{{ route('productos.create') }}" class="btn btn-success mb-3">
             <i class="fas fa-plus"></i> Agregar Nuevo Producto
         </a>
+        <a href="{{ route('productos.google') }}" class="btn btn-info mb-3 me-3">
+            <i class="fa-solid fa-globe"></i> Ver Productos Google
+        </a>
     <form action="{{ route('cerrar') }}" method = "POST">
         @csrf
 
@@ -40,6 +43,10 @@
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Stock</th>
+
+                <!-- 🔥 SOLO ESTO SE AGREGÓ -->
+                <th>Categoría</th>
+
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -50,6 +57,10 @@
                 <td>{{ $producto->descripcion }}</td>
                 <td>{{ $producto->precio }}</td>
                 <td>{{ $producto->stock }}</td>
+
+                <!-- 🔥 SOLO ESTO SE AGREGÓ -->
+                <td>{{ $producto->categoria->nombre ?? 'Sin categoría' }}</td>
+
                 <td>
                     <a href="{{ route('productos.edit', $producto->id) }}">
                         <button class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
